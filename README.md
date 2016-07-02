@@ -1,3 +1,5 @@
 # KITAPUNYAACARA
-HOMEWORK KITAPUNYAACARA
-[KITAPUNYAACARA website](http://kitapunyaacara.com)
+Homework Kitapunyaacara
+
+## License
+[Website](http://kitapunyaacara.com)

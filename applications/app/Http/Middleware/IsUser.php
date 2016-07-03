@@ -3,7 +3,7 @@
 use Closure;
 use Illuminate\Http\RedirectResponse;
 
-class IsAdmin {
+class IsUser {
 
 	/**
 	 * Handle an incoming request.
@@ -14,7 +14,7 @@ class IsAdmin {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if (session('status') === 'admin')
+		if (session('status') === 'user')
 		{
 			return $next($request);
 		}

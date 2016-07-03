@@ -44,7 +44,7 @@ class UserRepository extends BaseRepository
 			$user->seen = $inputs['seen'] == 'true';
 		} else {
 
-			$user->username = $inputs['username'];
+			$user->name = $inputs['name'];
 			$user->email = $inputs['email'];
 
 			if(isset($inputs['role'])) {

@@ -24,24 +24,22 @@
 	Route::resource('contact', 'ContactController', [
 		'except' => ['show', 'edit']
 	]);
-	
-	//Coba redirect nih
-	Route::get('contact/admin', 'ContactController@admin')->middleware(['admin']);
-	Route::get('contact/dashboard', 'ContactController@dashboard')->middleware(['redac']);
+
+	//Contact
 	Route::get('contact/user', 'ContactController@user');
 
 	// Authentication Routes ...
-	Route::get('auth/login', 'Auth\AuthController@getLogin');
-	Route::post('auth/login', 'Auth\AuthController@postLogin');
-	Route::get('auth/logout', 'Auth\AuthController@getLogout');
-	Route::get('auth/confirm/{token}', 'Auth\AuthController@getConfirm');
+	Route::get('login', 'Auth\AuthController@getLogin');
+	Route::post('login', 'Auth\AuthController@postLogin');
+	Route::get('logout', 'Auth\AuthController@getLogout');
+	Route::get('confirm/{token}', 'Auth\AuthController@getConfirm');
 
 	// Resend Routes ...
-	Route::get('auth/resend', 'Auth\AuthController@getResend');
+	Route::get('resend', 'Auth\AuthController@getResend');
 
 	// Registration Routes ...
-	Route::get('auth/register', 'Auth\AuthController@getRegister');
-	Route::post('auth/register', 'Auth\AuthController@postRegister');
+	Route::get('register', 'Auth\AuthController@getRegister');
+	Route::post('register', 'Auth\AuthController@postRegister');
 
 	// Password Reset Link Request Routes ...
 	Route::get('password/email', 'Auth\PasswordController@getEmail');

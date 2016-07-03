@@ -6,7 +6,6 @@
 <title>Register</title>
 
 <link href="{{ url('back/css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ url('back/css/datepicker3.css') }}" rel="stylesheet">
 <link href="{{ url('back/css/styles.css') }}" rel="stylesheet">
 
 <!--[if lt IE 9]>
@@ -23,18 +22,18 @@
             <div class="login-panel panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form role="form" method="POST" action="{{ url('auth/register')}}">{!! csrf_field()!!}
+                    <form role="form" method="POST" action="{{ url('register')}}">{!! csrf_field()!!}
                         <fieldset>
-                            <div class="form-group{{ $errors->has('username' ? 'has-error' : '')}}">
-                                <input class="form-control" placeholder="Name" name="username" type="text" autofocus="">
-                                @if( $errors->has('username'))
+                            <div class="form-group{{ $errors->has('name' ? 'has-error' : '')}}">
+                                <input class="form-control" placeholder="Name" name="name" type="text" autofocus="" value="{{ old('name') }}">
+                                @if( $errors->has('name'))
                                     <span cslass="help-block">
-                                        <strong>{{ $errors->first('username')}}</strong>
+                                        <strong>{{ $errors->first('name')}}</strong>
                                     </span>
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('email') ? 'has-error' : '' }}">
-                                <input class="form-control" placeholder="E-mail" name="email" type="email">
+                                <input class="form-control" placeholder="E-mail" name="email" type="email" value="{{ old('email') }}">
                                 @if($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email')}}</strong>
@@ -42,7 +41,7 @@
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('password') ? 'has-error' : ''}}">
-                                <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                <input class="form-control" placeholder="Password" name="password" type="password" value="{{ old('password') }}">
                                 @if($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password')}}</strong>
@@ -50,7 +49,7 @@
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('password_confirmation') ? 'has-error' : ''}}">
-                                <input class="form-control" placeholder="Confirm Password" name="password_confirmation" type="password" value="">
+                                <input class="form-control" placeholder="Confirm Password" name="password_confirmation" type="password" value="{{ old('password_confirmation') }}">
                                 @if($errors->has('password_confirmation'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation')}}</strong>

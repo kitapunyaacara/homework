@@ -29,7 +29,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @return Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function role() 
+	public function role()
 	{
 		return $this->belongsTo('App\Models\Role');
 	}
@@ -39,7 +39,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @return Illuminate\Database\Eloquent\Relations\hasMany
 	 */
-	public function posts() 
+	public function posts()
 	{
 	  return $this->hasMany('App\Models\Post');
 	}
@@ -49,29 +49,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @return Illuminate\Database\Eloquent\Relations\hasMany
 	 */
-	public function comments() 
+	public function comments()
 	{
 	  return $this->hasMany('App\Models\Comment');
-	}
-
-	/**
-	 * Check media all access
-	 *
-	 * @return bool
-	 */
-	public function accessMediasAll()
-	{
-	    return $this->role->slug == 'admin';
-	}
-
-	/**
-	 * Check media access one folder
-	 *
-	 * @return bool
-	 */
-	public function accessMediasFolder()
-	{
-	    return $this->role->slug != 'user';
 	}
 
 }

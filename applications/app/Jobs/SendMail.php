@@ -44,7 +44,7 @@ class SendMail extends Job
     ];
 
     $mailer->send('emails.auth.verify', $data, function($message){
-      $message->to($this->user->email, $this->user->username)->subject(trans('front\verify.email-title'));
+      $message->to($this->user->email, $this->user->name)->subject(trans('front\verify.email-title'));
     });
   }
 }

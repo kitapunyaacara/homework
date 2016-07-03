@@ -17,18 +17,20 @@ class RegisterRequest extends Request
 	public function rules()
 	{
 		return [
-			'username' => 'required|max:30|alpha|unique:users',
+			'name' => 'required|max:30',
 			'email' => 'required|email|max:255|unique:users',
 			'password' => 'required|min:8|confirmed',
 		];
 	}
 
-	public function message()
+	public function messages()
 	{
 		return [
-			'username.required' => 'Wajib di Isi',
+			'name.required' => 'Wajib di Isi',
 			'email.required' => 'Wajib di Isi',
+			'email.unique' => 'Sudah Terdaftar',
 			'password.required'  => 'Wajib di Isi',
+			'password.min'  => 'Minimal 8 Karakter',
 		];
 	}
 

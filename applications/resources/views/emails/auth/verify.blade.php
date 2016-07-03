@@ -5,9 +5,9 @@
 	</head>
 	<body>
 		<h2>{{ $title }}</h2>
-
+		{{ $name }}
 		<div>
-			{!! $intro . link_to('auth/confirm/' . $confirmation_code, $link) !!}.<br>
+			{!! $intro . link_to('confirm/' . $confirmation_code, $link) !!}.<br>
 		</div>
 	</body>
 </html>

@@ -11,8 +11,11 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
-use App\Repositories\UserRepository;
-use App\Jobs\SendMail;
+// use App\Repositories\UserRepository;
+// use App\Jobs\SendMail;
+use Mail;
+use Illuminate\Support\Facades\Input;
+use Auth;
 use App\Models\User;
 
 class AuthController extends Controller
@@ -59,13 +62,13 @@ class AuthController extends Controller
     // dd($request);
 		$logValue = $request->input('log');
     // dd($logValue);
-		$logAccess = filter_var($logValue, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+		$logAccess = filter_var($logValue, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
     // dd($logAccess);
 		$throttles = in_array(ThrottlesLogins::class, class_uses_recursive(get_class($this)));
     //dd($throttles);
 		if ($throttles && $this->hasTooManyLoginAttempts($request))
 		{
-			return redirect('/auth/login')->with('error', trans('front/login.maxattempt'))->withInput($request->only('log'));
+			return redirect('login')->with('error', trans('front/login.maxattempt'))->withInput($request->only('log'));
 		}
 
 		$credentials = [
@@ -80,13 +83,13 @@ class AuthController extends Controller
 			  $this->incrementLoginAttempts($request);
 			}
 
-			return redirect('/auth/login')->with('error', trans('front/login.credentials'))->withInput($request->only('log'));
+			return redirect('login')->with('error', trans('front/login.credentials'))->withInput($request->only('log'));
 		}
 
 		$user = $auth->getLastAttempted();
-	//dd($user->role->slug === 'user');
+		//dd($user->role->slug === 'admin');
 
-		if($user->confirmed)
+		if($user->activated)
 		{
 			if ($throttles)
 			{
@@ -99,25 +102,39 @@ class AuthController extends Controller
 			{
 				$request->session()->forget('user_id');
 			}
-			
+
 			if($user->role->slug === 'admin')
 			{
+				$set = User::find(Auth::user()->id);
+        $getcounter = $set->login_counter;
+        $set->login_counter = $getcounter+1;
+        $set->save();
+
 				return redirect('contact/admin');
 			}
 			else if($user->role->slug === 'redac')
 			{
+				$set = User::find(Auth::user()->id);
+        $getcounter = $set->login_counter;
+        $set->login_counter = $getcounter+1;
+        $set->save();
+
 				return redirect('contact/dashboard');
 			}
 			else if($user->role->slug === 'user')
 			{
-				return redirect('contact/contact');
+				$set = User::find(Auth::user()->id);
+        $getcounter = $set->login_counter;
+        $set->login_counter = $getcounter+1;
+        $set->save();
+
+				return redirect('/');
 			}
-			//return redirect('contact');
 		}
 
 		$request->session()->put('user_id', $user->id);
 
-		return redirect('/auth/login')->with('error', trans('front/verify.again'));
+		return redirect('login')->with('error', trans('front/verify.again'));
 	}
 
   /**
@@ -126,30 +143,50 @@ class AuthController extends Controller
    * @param App\Http\Requests\RegisterRequest $request
    * @return Response
    */
-  public function postRegister(RegisterRequest $request, UserRepository $user_manajemen)
+  public function postRegister(RegisterRequest $request)
   {
-    //dd($request);
-    $user = $user_manajemen->store(
-              $request->all(), $confirmation_code = str_random(30)
-            );
+    $confirmation_code	= str_random(30).time();
+		$user = new User;
+		$user->name		= $request->name;
+		$user->email	=	$request->email;
+		$user->password	= bcrypt($request->password);
+		$user->role_id	= 3;
+		$user->activated	= 0;
+		$user->confirmation_code	= $confirmation_code;
+		$user->save();
 
-    $this->dispatch(new SendMail($user));
+		$data	= [
+			'title'  => trans('front/verify.email-title'),
+      'intro'  => trans('front/verify.email-intro'),
+      'link'   => trans('front/verify.email-link'),
+			'name'	=> $request->name,
+			'confirmation_code' => $confirmation_code,
+			];
 
-    return redirect('/')->with('ok', trans('front/veify.message'));
+		Mail::send('emails.auth.verify', $data, function($message){
+			$message->to(Input::get('email'), Input::get('name'))->subject('Aktivasi Akun Kitapunyaacara');
+		});
+
+		return redirect('/')->with('message', trans('front/veify.message'));
   }
 
   /**
    * Untuk Konfirmasi Request
    *
-   * @param App\Repositories\UserRepository $user_manajemen
-   * @param string $confirmation_code
+   * @param string $confirmation_code $token
    * @return Response
    */
-  public function getConfirm(UserRepository $user_manajemen, $confirmation_code)
+  public function getConfirm($token)
   {
-    $user =  $user_manajemen->confirm($confirmation_code);
+		$user = User::where('confirmation_code', $token)->first();
+      if($user->role_id == "3")
+      {
+        $user->confirmation_code = null;
+        $user->activated = 1;
+        $user->save();
+      }
 
-    return redirect('/')->with('ok', trans('front/verify.success'));
+			return redirect('/')->with('message', trans('front/verify.success'));
   }
 
   /**
@@ -159,15 +196,9 @@ class AuthController extends Controller
 	 * @param  Illuminate\Http\Request $request
 	 * @return Response
 	 */
-	public function getResend(UserRepository $user_gestion, Request $request)
+	public function getResend(Request $request)
 	{
-		if($request->session()->has('user_id'))	{
-			$user = $user_gestion->getById($request->session()->get('user_id'));
-
-			$this->dispatch(new SendMail($user));
-
-			return redirect('/')->with('ok', trans('front/verify.resend'));
-		}
+		//Belum bisa resend email
 
 		return redirect('/');
 	}

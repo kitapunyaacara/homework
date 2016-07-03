@@ -5,8 +5,8 @@
 
 @font-face {
     font-family: 'russo_oneregular';
-    src: url('../fonts/russo_one-webfont.woff2') format('woff2'),
-         url('../fonts/russo_one-webfont.woff') format('woff');
+    src: url('../../../../../fonts/russo_one-webfont.woff2') format('woff2'),
+         url('../../../../../fonts/russo_one-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -14,8 +14,8 @@
 
 @font-face {
     font-family: 'faber_sans_pro_redu75halbfett';
-    src: url('../fonts/fabersanspro75reduced-webfont.woff2') format('woff2'),
-         url('../fonts/fabersanspro75reduced-webfont.woff') format('woff');
+    src: url('../../fonts/fabersanspro75reduced-webfont.woff2') format('woff2'),
+         url('../../fonts/fabersanspro75reduced-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 

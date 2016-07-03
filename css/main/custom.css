@@ -5,8 +5,8 @@
 
 @font-face {
     font-family: 'russo_oneregular';
-    src: url('../../../../../fonts/russo_one-webfont.woff2') format('woff2'),
-         url('../../../../../fonts/russo_one-webfont.woff') format('woff');
+    src: url('../../fonts/russo_one-webfont.woff2') format('woff2'),
+         url('../../fonts/russo_one-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 

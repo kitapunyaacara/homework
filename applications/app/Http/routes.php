@@ -28,6 +28,13 @@
 	//Contact
 	Route::get('contact/user', 'ContactController@user');
 
+	//About
+	Route::get('about', 'AboutController@index');
+
+	//Events
+	Route::get('events', 'EventsController@index');
+
+
 	// Authentication Routes ...
 	Route::get('login', 'Auth\AuthController@getLogin');
 	Route::post('login', 'Auth\AuthController@postLogin');

@@ -48,7 +48,7 @@ body {
 /* Navigation */
 .header {
 	background-color:#FFF;
-	margin:25px;		
+	margin:25px;
 }
 
 .navbar {
@@ -68,7 +68,7 @@ body {
 
 .con-slider {
 	background-color:#FFF;
-	margin:10px;	
+	margin:10px;
 }
 
 .navbar-text {
@@ -86,7 +86,7 @@ body {
 	text-decoration:none;
 }
 .logo:hover{
-	color:#000;	
+	color:#000;
 }
 
 .tagline {
@@ -129,7 +129,7 @@ body {
 /* Our Work */
 
 .our-work{
-	margin:25px;	
+	margin:25px;
 	background:#fff;
 }
 
@@ -160,29 +160,46 @@ body {
 
 /* Events */
 
-.events .title {
-	padding:20px 0;
+.events{
+	margin:25px;
+	background:#fff;
 }
 
-.events-detail {
-	padding:20px 0;
+.content-events {
+	padding:25px 0;
+	width:100%;
 }
 
-.events-detail a{
-	text-decoration:none;
-	color:#000;
+.col-img{
+	width:48%;
+	padding:10px;
+	float:left;
 }
 
-.load {
-	padding:20px 0;
+.col-img img{
+	width:100%;
 }
 
-.load a{
-	text-decoration:none;
-	color:#000;
+.col-text{
+	width:48%;
+	padding:10px;
+	float:left;
 }
-
 /* End Events */
+
+/* About */
+.about{
+	margin:25px;
+	background:#fff;
+}
+
+.content-about {
+	padding:25px 0;
+	width:100%;
+}
+
+
+/* End About */
 
 
 /* Footer */
@@ -193,11 +210,11 @@ body {
 }
 
 .contact {
-	padding-bottom:25px;	
+	padding-bottom:25px;
 }
 
 .email {
-	padding-top:10px;	
+	padding-top:10px;
 }
 
 .email a {
@@ -206,7 +223,7 @@ body {
 }
 
 .social {
-	padding-top:10px;	
+	padding-top:10px;
 }
 
 .social i{
@@ -251,4 +268,4 @@ and (min-device-width:320px) and (max-device-width:400px) {
 		.col-our-work {
 			width:100% !important;
 		}
-} 
+}

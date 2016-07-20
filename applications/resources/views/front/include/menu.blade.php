@@ -23,9 +23,9 @@
 			<button type="button" class="overlay-close">Close</button>
 			<nav>
 				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Events</a></li>
+					<li><a href="{{ route('home') }}">Home</a></li>
+					<li><a href="{{ route('about') }}">About</a></li>
+					<li><a href="{{ route('events') }}">Events</a></li>
 					<li><a href="#">Work</a></li>
 					<li><a href="#">Contact</a></li>
 				</ul>

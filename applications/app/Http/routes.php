@@ -12,27 +12,21 @@
 */
 
 	// Welcome Page Routes
-	Route::get('/', [
-		'uses'	=> 'HomeController@index',
-		'as'		=> 'home'
-	]);
-
+	Route::get('/', ['as'	=> 'home', 'uses'	=> 'HomeController@index']);
 	// Ganti Bahasa
 	Route::get('language/{lang}', 'HomeController@language')->where('lang', '[A-Za-z_-]+');
 
 	// Contact Routes
-	Route::resource('contact', 'ContactController', [
-		'except' => ['show', 'edit']
-	]);
+	Route::get('contact', ['as' => 'contact', 'uses' => 'ContactController@index']);
 
 	//Contact
 	Route::get('contact/user', 'ContactController@user');
 
 	//About
-	Route::get('about', 'AboutController@index');
+	Route::get('about', ['as' => 'about', 'uses' => 'AboutController@index']);
 
 	//Events
-	Route::get('events', 'EventsController@index');
+	Route::get('events', ['as' => 'events', 'uses' => 'EventsController@index']);
 
 
 	// Authentication Routes ...

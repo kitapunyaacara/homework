@@ -26,7 +26,7 @@
 					<li><a href="{{ route('home') }}">Home</a></li>
 					<li><a href="{{ route('about') }}">About</a></li>
 					<li><a href="{{ route('events') }}">Events</a></li>
-					<li><a href="#">Work</a></li>
+					<li><a href="{{ route('daftar') }}">Register</a></li>
 					<li><a href="#">Contact</a></li>
 				</ul>
 			</nav>

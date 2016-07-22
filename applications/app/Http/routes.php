@@ -28,6 +28,9 @@
 	//Events
 	Route::get('events', ['as' => 'events', 'uses' => 'EventsController@index']);
 
+	//Events
+	Route::get('daftar', ['as' => 'daftar', 'uses' => 'DaftarController@index']);
+
 
 	// Authentication Routes ...
 	Route::get('login', 'Auth\AuthController@getLogin');

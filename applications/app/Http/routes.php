@@ -52,3 +52,10 @@
 	// Password Reset Routes ...
 	Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 	Route::post('password/reset', 'Auth\PasswordController@postReset');
+
+	/////////////// BACKEND ROUTES ///////////////
+	Route::get('admin/dashboard', 'DashboardController@index');
+
+
+
+	/////////////// END FOR BACKEND ROUTES ///////////////

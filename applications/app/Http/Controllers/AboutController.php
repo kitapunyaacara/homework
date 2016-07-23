@@ -12,12 +12,13 @@ class AboutController extends Controller
     * Create a new ContactController instance
     *
     * @return void
-    
-  public function __construct()
-  {
-    $this->middleware('admin', ['except' => ['create', 'store', 'index']]);
-  }
-*/
+  	*
+	**/
+  // public function __construct()
+  // {
+  //   $this->middleware('admin', ['except' => ['create', 'store', 'index']]);
+  // }
+
 	/**
 	* Menampilkan data dari database
 	*
@@ -28,8 +29,8 @@ class AboutController extends Controller
 	{
 	return view('front.about');
 	}
-	
-	
+
+
 	/**
 	* Show the form for creating a new resource.
 	*

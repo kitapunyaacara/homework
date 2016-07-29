@@ -53,14 +53,14 @@
       </ul>
     </li>
     <li class="treeview">
-      <a href="#">
+      <a href="">
         <i class="fa fa-laptop"></i>
-        <span>Events</span>
+        <span>Event/Tips</span>
         <i class="fa fa-angle-left pull-right"></i>
       </a>
       <ul class="treeview-menu">
-        <li><a href="#"><i class="fa fa-circle-o"></i> -----</a></li>
-        <li><a href="#"><i class="fa fa-circle-o"></i> -----</a></li>
+        <li><a href="{{ url('admin/posting') }}"><i class="fa fa-circle-o"></i> Posting</a></li>
+        <li><a href="{{ url('admin/kategori') }}"><i class="fa fa-circle-o"></i> Kategori</a></li>
       </ul>
     </li>
     <li class="treeview">

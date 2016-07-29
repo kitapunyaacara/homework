@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Contacts extends Migration
+class CreateTableKategori extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class Contacts extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function(Blueprint $table){
+        Schema::create('kategori', function(Blueprint $table){
           $table->increments('id');
-          $table->string('nama', 50);
-          $table->string('email');
-          $table->text('pesan', 250);
-          $table->timestamps();
+          $table->integer('parent_id')->unsigned()->nullable();
+          $table->string('slug');
+          $table->string('nama_kategori', 50);
         });
     }
 
@@ -28,6 +27,6 @@ class Contacts extends Migration
      */
     public function down()
     {
-        Schema::drop('contacts');
+        //
     }
 }

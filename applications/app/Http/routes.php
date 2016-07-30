@@ -28,7 +28,9 @@
 	//Events
 	Route::get('events', ['as' => 'events', 'uses' => 'EventsController@index']);
 
-	//Events
+	Route::get('events/detail', ['as' => 'events.detail', 'uses' => 'EventsController@detail']);
+
+	//Daftar
 	Route::get('daftar', ['as' => 'daftar', 'uses' => 'DaftarController@index']);
 
 

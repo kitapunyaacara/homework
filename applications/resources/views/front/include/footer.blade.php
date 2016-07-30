@@ -21,11 +21,11 @@
 		</div>
 	<div>
 </div>
-<script type="text/javascript" src="js/jquery-1.11.2.min.js"/></script>
-<script type="text/javascript" src="js/owl.carousel.min.js" /></script>
-<script src="js/modernizr.custom.js"></script>
-<script src="js/classie.js"></script>
-<script src="js/demo1.js"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-1.11.2.min.js')}}"/></script>
+<script type="text/javascript" src="{{ asset('js/owl.carousel.min.js')}}" /></script>
+<script src="{{ asset('js/modernizr.custom.js')}}"></script>
+<script src="{{ asset('js/classie.js')}}"></script>
+<script src="{{ asset('js/demo1.js')}}"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.slider').owlCarousel({

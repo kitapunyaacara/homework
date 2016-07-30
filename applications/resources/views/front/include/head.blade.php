@@ -23,14 +23,14 @@
 <link href='img/favicon32px.png' rel='icon' sizes='32x32' type='image/png'>
 
 <!-- JS -->
-<link rel="stylesheet" href="js/bootstrap.min.js" />
+<link rel="stylesheet" href="{{ asset('js/bootstrap.min.js')}}" />
 
 <!-- CSS -->
-<link rel="stylesheet" href="css/main/bootstrap.min.css" />
-<link rel="stylesheet" href="css/main/font-awesome.min.css" />
-<link rel="stylesheet" href="css/main/owl.carousel.css" />
-<link rel="stylesheet" href="css/main/style6.css" />
-<link rel="stylesheet" href="css/main/custom.css" />
+<link rel="stylesheet" href="{{ asset('css/main/bootstrap.min.css')}}" />
+<link rel="stylesheet" href="{{ asset('css/main/font-awesome.min.css')}}" />
+<link rel="stylesheet" href="{{ asset('css/main/owl.carousel.css')}}" />
+<link rel="stylesheet" href="{{ asset('css/main/style6.css')}}" />
+<link rel="stylesheet" href="{{ asset('css/main/custom.css')}}" />
 
 <link rel="image_src" href="http://kitapunyaacara.com/img/bg.jpg" />
 

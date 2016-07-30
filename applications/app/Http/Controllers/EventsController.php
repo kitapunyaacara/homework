@@ -29,6 +29,11 @@ class EventsController extends Controller
 	return view('front.events');
 	}
 
+  public function detail()
+	{
+	return view('front.events-detail');
+	}
+
 
 	/**
 	* Show the form for creating a new resource.

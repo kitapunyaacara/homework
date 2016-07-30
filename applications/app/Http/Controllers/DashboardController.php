@@ -8,15 +8,14 @@ use App\Http\Requests\ContactRequest;
 class DashboardController extends Controller
 {
   /**
-    * Create a new ContactController instance
-    *
-    * @return void
-  	*
-	**/
-  // public function __construct()
-  // {
-  //   $this->middleware('admin', ['except' => ['create', 'store', 'index']]);
-  // }
+  * Create a new authentication controller instance.
+  *
+  * @return void
+  */
+   public function __construct()
+   {
+     $this->middleware('admin');
+   }
 
 	/**
 	* Menampilkan data dari database

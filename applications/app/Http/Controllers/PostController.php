@@ -17,7 +17,7 @@ class PostController extends Controller
   {
     $getPost = Post::join('users', 'users.id', '=', 'post.author_id')
                     ->join('kategori', 'kategori.id', '=', 'post.kategori_id')
-                    ->select('judul', 'users.name', 'kategori.nama_kategori', 'publish', 'tags')
+                    ->select('post.id','judul', 'users.name', 'kategori.nama_kategori', 'publish', 'tags')
                     ->get();
     // dd($getPost);
     return view('backend.pages.post-list', compact('getPost'));
@@ -56,8 +56,52 @@ class PostController extends Controller
     }
 
     return redirect()->route('admin.posting')->with('message','Berhasil Tambah Posting Baru.');
+  }
 
+  public function edit($id)
+  {
+    $editpost     = Post::where('id', $id)->first();
+    // dd($editpost);
+    $getkategori  = Kategori::get();
 
+    return view('backend.pages.post-create', compact('getkategori', 'editpost'));
+  }
+
+  public function update(Request $request)
+  {
+    $image = $request->file('image');
+    $thumb = $request->file('thumb');
+    if ($image != null) {
+      $image_name = time(). '.' . $image->getClientOriginalExtension();
+      Image::make($image)->resize(472,270)->save('img/'. $image_name);
+
+      $thumb_name = time(). '.' . $thumb->getClientOriginalExtension();
+      Image::make($thumb)->resize(472,270)->save('img/'. $thumb_name);
+
+      $set = Post::find($request->id);
+      $set->kategori_id = $request->kategori_id;
+      $set->publish = $request->publish;
+      $set->author_id = Auth::user()->id;
+      $set->image = $image_name;
+      $set->thumb = $thumb_name;
+      $set->tanggal_event = $request->tanggal_event;
+      $set->judul = $request->judul;
+      $set->tags = $request->tags;
+      $set->konten = $request->konten;
+      $set->save();
+    }else{
+      $set = Post::find($request->id);
+      $set->kategori_id = $request->kategori_id;
+      $set->publish = $request->publish;
+      $set->author_id = Auth::user()->id;
+      $set->tanggal_event = $request->tanggal_event;
+      $set->judul = $request->judul;
+      $set->tags = $request->tags;
+      $set->konten = $request->konten;
+      $set->save();
+    }
+
+    return redirect()->route('admin.posting')->with('message', 'Posting Berhasil Dirubah.');
   }
 
 }

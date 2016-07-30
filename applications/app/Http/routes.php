@@ -61,6 +61,9 @@
 	Route::get('admin/posting', ['as' => 'admin.posting', 'uses' => 'PostController@index']);
 	Route::get('admin/posting/create', ['as' => 'admin.posting.create', 'uses' => 'PostController@create']);
 	Route::post('admin/posting/create', ['as' => 'admin.posting.post', 'uses' => 'PostController@store']);
+	Route::get('admin/posting/edit/{id}', ['as' => 'admin.posting.edit', 'uses' => 'PostController@edit']);
+	Route::get('admin/posting/edit/{id}', ['as' => 'admin.posting.edit', 'uses' => 'PostController@edit']);
+	Route::post('admin/posting/edit', ['as' => 'admin.posting.edit', 'uses' => 'PostController@update']);
 
 	Route::get('admin/kategori', ['as' => 'admin.kategori', 'uses' => 'KategoriController@index']);
 	Route::post('admin/kategori/create', ['as' => 'admin.kategori.post', 'uses' => 'KategoriController@store']);

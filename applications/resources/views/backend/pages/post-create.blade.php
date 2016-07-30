@@ -54,7 +54,7 @@
     <div class="col-md-12">
       <form class="form-horizontal"
         @if(isset($editpost))
-          action="{{route('admin.posting.update')}}"
+          action="{{route('admin.posting.edit')}}"
         @else
           action="{{route('admin.posting.post')}}"
         @endif

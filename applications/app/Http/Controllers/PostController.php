@@ -48,13 +48,14 @@ class PostController extends Controller
       // $set->author_id = Auth::user()->id;
       $set->image = $image_name;
       $set->thumb = $thumb_name;
+      $set->tanggal_event = $request->tanggal_event;
       $set->judul = $request->judul;
       $set->tags = $request->tags;
       $set->konten = $request->konten;
       $set->save();
     }
 
-    return redirect()->route('admin.posting')->with('message','Berhasil memasukkan pegawai baru.');
+    return redirect()->route('admin.posting')->with('message','Berhasil Tambah Posting Baru.');
 
 
   }

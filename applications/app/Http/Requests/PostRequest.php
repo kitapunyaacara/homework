@@ -20,7 +20,6 @@ class PostRequest extends Request
     return [
       'judul'   => 'required|max:100|min:3',
       'konten' => 'required',
-      'tanggal_acara' => 'required',
       'image'   => 'required|mimes:jpeg,bmp,png',
       'thumb'   => 'required|mimes:jpeg,bmp,png',
       'tags'    => 'required'
@@ -32,7 +31,6 @@ class PostRequest extends Request
     return [
       'judul.required' => 'Wajib di Isi',
       'konten.required' => 'Wajib di Isi',
-      'tanggal_acara.required' => 'Wajib di Isi',
       'image.required' => 'Wajib di Isi',
       'image.mimes' => 'Tipe File jpeg, bmp, png',
       'thumb.required' => 'Wajib di Isi',

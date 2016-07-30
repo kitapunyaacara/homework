@@ -11,7 +11,7 @@
 @section('breadcrumb')
   <h1>
     Post List
-    <small><a href="{{ url('admin/posting/create') }}"><button class="btn btn-block btn-success btn-sm">Add</button></a></small>
+    <small></small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{ url('admin/dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -120,13 +120,13 @@
                   @endif
                 </div>
               </div>
-              <div class="form-group {{ $errors->has('tanggal_acara') ? 'has-error' : ''}}">
+              <div class="form-group {{ $errors->has('tanggal_event') ? 'has-error' : ''}}">
                 <label class="col-sm-2 control-label">Tanggal Acara</label>
                 <div class="col-sm-3">
-                  <input type="date" class="form-control" name="tanggal_acara" id="datepicker">
-                  @if($errors->has('tanggal_acara'))
+                  <input type="date" class="form-control" name="tanggal_event" id="datepicker">
+                  @if($errors->has('tanggal_event'))
                    <span class="help-block">
-                     <strong>{{ $errors->first('tanggal_acara')}}
+                     <strong>{{ $errors->first('tanggal_event')}}
                      </strong>
                    </span>
                   @endif

@@ -110,7 +110,7 @@ class AuthController extends Controller
         $set->login_counter = $getcounter+1;
         $set->save();
 
-				return redirect('contact/admin');
+				return redirect('admin/dashboard');
 			}
 			else if($user->role->slug === 'redac')
 			{
@@ -119,7 +119,7 @@ class AuthController extends Controller
         $set->login_counter = $getcounter+1;
         $set->save();
 
-				return redirect('contact/dashboard');
+				return redirect('admin/dashboard');
 			}
 			else if($user->role->slug === 'user')
 			{
@@ -186,7 +186,7 @@ class AuthController extends Controller
         $user->save();
       }
 
-			return redirect('/')->with('message', trans('front/verify.success'));
+			return redirect('/')->with('message', "Terimakasih, Akun Anda Telah di Verifikasi");
   }
 
   /**

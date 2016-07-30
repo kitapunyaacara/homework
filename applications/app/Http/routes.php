@@ -54,3 +54,16 @@
 	// Password Reset Routes ...
 	Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 	Route::post('password/reset', 'Auth\PasswordController@postReset');
+
+	/////////////// BACKEND ROUTES ///////////////
+	Route::get('admin/dashboard', 'DashboardController@index');
+
+	Route::get('admin/posting', ['as' => 'admin.posting', 'uses' => 'PostController@index']);
+	Route::get('admin/posting/create', ['as' => 'admin.posting.create', 'uses' => 'PostController@create']);
+	Route::post('admin/posting/create', ['as' => 'admin.posting.post', 'uses' => 'PostController@store']);
+
+	Route::get('admin/kategori', ['as' => 'admin.kategori', 'uses' => 'KategoriController@index']);
+	Route::get('admin/kategori/create', ['as' => 'admin.kategori.create', 'uses' => 'KategoriController@create']);
+	Route::post('admin/kategori/create', ['as' => 'admin.kategori.post', 'uses' => 'KategoriController@store']);
+
+	/////////////// END FOR BACKEND ROUTES ///////////////

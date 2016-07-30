@@ -167,7 +167,7 @@ class AuthController extends Controller
 			$message->to(Input::get('email'), Input::get('name'))->subject('Aktivasi Akun Kitapunyaacara');
 		});
 
-		return redirect('/')->with('message', trans('front/veify.message'));
+		return redirect('/')->with('message', 'Silahkan Cek Folder Inbpx/Spam Pada Email Anda');
   }
 
   /**

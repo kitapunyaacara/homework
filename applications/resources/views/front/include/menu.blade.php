@@ -5,7 +5,7 @@
 		<div class="navbar-left">
 		  <div class="navbar-brand" href="#">
 			<a href="#">
-				<img alt="Brand" src="img/logo-kpa.png">
+				<img alt="Brand" src="{{ asset('img/logo-kpa.png') }}">
 			</a>
 		  </div>
 			<div class="navbar-text logo">
@@ -16,7 +16,7 @@
 		</div>
 		<div class="navbar-right">
 			<a id="trigger-overlay" href="#">
-				<img alt="Brand" src="img/burger.png">
+				<img alt="Brand" src="{{ asset('img/burger.png') }}">
 			</a>
 		</div>
 		<div class="overlay overlay-door">

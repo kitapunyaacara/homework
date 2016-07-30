@@ -160,14 +160,22 @@ body {
 
 /* Events */
 
-.events{
-	margin:25px;
+.events {
+  margin:25px;
+}
+
+.col-events{
 	background:#fff;
 }
 
 .content-events {
-	padding:25px 0;
-	width:100%;
+  padding-bottom: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.text-event{
+  padding: 50px;
 }
 
 .col-img{

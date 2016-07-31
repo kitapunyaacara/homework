@@ -62,10 +62,12 @@
 	Route::get('admin/posting/create', ['as' => 'admin.posting.create', 'uses' => 'PostController@create']);
 	Route::post('admin/posting/create', ['as' => 'admin.posting.post', 'uses' => 'PostController@store']);
 	Route::get('admin/posting/edit/{id}', ['as' => 'admin.posting.edit', 'uses' => 'PostController@edit']);
-	Route::get('admin/posting/edit/{id}', ['as' => 'admin.posting.edit', 'uses' => 'PostController@edit']);
+	// Route::get('admin/posting/edit/{id}', ['as' => 'admin.posting.edit', 'uses' => 'PostController@edit']);
 	Route::post('admin/posting/edit', ['as' => 'admin.posting.edit', 'uses' => 'PostController@update']);
 
 	Route::get('admin/kategori', ['as' => 'admin.kategori', 'uses' => 'KategoriController@index']);
 	Route::post('admin/kategori/create', ['as' => 'admin.kategori.post', 'uses' => 'KategoriController@store']);
+	Route::get('admin/kategori/edit/{id}', ['as' => 'admin.kategori.edit', 'uses' => 'KategoriController@edit']);
+	Route::post('admin/kategori/edit', ['as' => 'admin.kategori.edit', 'uses' => 'KategoriController@update']);
 
 	/////////////// END FOR BACKEND ROUTES ///////////////

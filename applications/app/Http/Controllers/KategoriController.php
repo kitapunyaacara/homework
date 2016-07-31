@@ -36,4 +36,27 @@ class KategoriController extends Controller
     return redirect()->route('admin.kategori')->with('message','Berhasil Tambah Kategori Baru.');
   }
 
+  public function edit($id)
+  {
+    $editkategori = Kategori::where('id', $id)->first();
+
+    $getKategori  = $this->index()->getKategori;
+    $listKategori = $this->index()->listKategori;
+    $getParent    = $this->index()->getParent;
+    
+    return view('backend.pages.kategori-list', compact('getKategori', 'listKategori', 'getParent', 'editkategori'));
+  }
+
+  public function update(Request $request)
+  {
+    $slug = str_slug($request->nama_kategori);
+
+    $set = Kategori::find($request->id);
+    $set->slug = $slug;
+    $set->nama_kategori = $request->nama_kategori;
+    $set->save();
+
+    return redirect()->route('admin.kategori')->with('message','Berhasil Mengubah Kategori.');
+  }
+
 }

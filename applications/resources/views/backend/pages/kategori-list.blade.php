@@ -29,6 +29,15 @@
       });
     }, 5000);
   </script>
+  <div class="col-md-12">
+    @if(Session::has('message'))
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
+        <p>{{ Session::get('message') }}</p>
+      </div>
+    @endif
+  </div>
   <div class="row">
     <div class="col-xs-4">
         <div class="box box-success box-solid">
@@ -40,7 +49,7 @@
             @endif
           </div><!-- /.box-header -->
           <div class="box-body">
-            <form class="form-horizontal" @if(isset($editkategori)) action="{{route('admin.kategori.update')}}" @else action="{{route('admin.kategori.post')}}" @endif method="post" style="margin-top:10px;" enctype="multipart/form-data">
+            <form class="form-horizontal" @if(isset($editkategori)) action="{{route('admin.kategori.edit')}}" @else action="{{route('admin.kategori.post')}}" @endif method="post" style="margin-top:10px;" enctype="multipart/form-data">
               {{csrf_field()}}
               <div class="form-group {{ $errors->has('nama_kategori') ? 'has-error' : ''}}">
                 <label class="col-sm-5 control-label">Nama Kategori</label>
@@ -134,7 +143,7 @@
                   @endif
                 </td>
                 <td>Status</td>
-                <td>Ubah</td>
+                <td><a href="{{ url('admin/kategori/edit/'.$kategori->id) }}"><i class="fa fa-fw fa-edit"></i> Ubah</a></td>
               </tr>
               @endforeach
             </tbody>
